@@ -1,9 +1,11 @@
 import os
 import numpy as np
+import matplotlib as mpl
 from matplotlib import pyplot as plt
 from anaflow import ext_theis_tpl, ext_thiem_tpl
 
 plt.style.use('ggplot')
+mpl.rc('lines', linewidth=3)
 
 time = 1e4                   # time point for steady state
 rad = np.geomspace(0.1, 10)  # radius from the pumping well in [0, 4]
@@ -22,7 +24,7 @@ head3 -= head3[-1]  # quasi-steady
 
 plt.plot(rad, head1, label="Ext Thiem TPL (steady state)")
 plt.plot(rad, head2, label="Ext Theis TPL bounded (t={})".format(time), linestyle="--")
-plt.plot(rad, head3, label="Ext Theis TPL quasi-steady (t={})".format(time), linestyle=":")
+plt.plot(rad, head3, label="Ext Theis TPL quasi-steady (t={})".format(time), linestyle=":", color="k")
 
 plt.xlabel("r in [m]")
 plt.ylabel("h in [m]")
