@@ -5,6 +5,7 @@ from anaflow.tools.coarse_graining import TPL_CG, TPL_CG_error
 from anaflow.tools.mean import annular_hmean
 from anaflow.tools.special import specialrange_cut, specialrange, step_f
 
+plt.close('all')
 plt.style.use('ggplot')
 
 cond_gmean = 1e-4            # the geometric mean of the transmissivity
@@ -39,4 +40,5 @@ rad = specialrange(0, np.ceil(r_last + 5), 1000)
 
 plt.plot(rad, step_f(rad, R_part, K_part))
 plt.plot(rad, TPL_CG(rad, cond_gmean, len_scale, hurst, var, dim=dim))
+plt.legend()
 plt.show()
