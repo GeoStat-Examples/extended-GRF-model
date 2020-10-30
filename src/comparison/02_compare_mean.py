@@ -79,8 +79,8 @@ def compare(base="eGRF_TPL_2D", p_min=0, p_max=np.inf):
     for pdf in pdfs:
         merger.append(pdf)
     merger.write(os.path.join(path, "diff.pdf"))
-    for pdf in pdfs:
-        os.remove(pdf)
+    # for pdf in pdfs:
+    #     os.remove(pdf)
 
 
 def plot_diff(time, rad, rt_head, et_head, para_no, path, para):
@@ -172,5 +172,5 @@ def plot_diff(time, rad, rt_head, et_head, para_no, path, para):
     plt.close("all")
 
 
-# calc_ensemble_mean()
+calc_ensemble_mean()
 compare()

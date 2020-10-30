@@ -181,6 +181,6 @@ fig.legend(handles, labels, loc='lower center', ncol=5, handlelength=4.0)
 plt.tight_layout()
 fig.subplots_adjust(bottom=0.13)
 fig.savefig(
-    os.path.join("..", "results", "02_literature_comparison.pdf"), dpi=300
+    os.path.join("..", "results", "03_literature_comparison.pdf"), dpi=300
 )
 plt.show()
