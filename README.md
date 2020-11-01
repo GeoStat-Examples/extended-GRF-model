@@ -21,7 +21,7 @@ reproduces the ensemble mean drawdown of pumping tests on synthetic aquifers.
 
 ## Structure
 
-Please organize your example in the given Structure
+The workflow is organized by the following structure:
 - `src/` - here you should place your python scripts
   - `00_ext_theis_tpl.py` - plotting the effective head for TPL variograms
   - `01_est_run.sh` - bash file running `02_para_estimation.py` in parallel
