@@ -9,10 +9,10 @@ import matplotlib.tri as tri
 from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
 from mpl_toolkits.axes_grid1.inset_locator import mark_inset
 
+plt.close("all")
 plt.style.use('default')
 mpl.rc("text", usetex=True)
 mpl.rc('lines', linewidth=3.5)
-plt.close("all")
 fig = plt.figure(figsize=[5, 4])
 ax = fig.add_subplot(1, 1, 1)
 
@@ -29,7 +29,6 @@ angles = 64
 msh = MSH()
 msh.generate("radial", dim=2, angles=angles, rad=rad)
 
-# use a rank dependently seeded pseudo-random number generator
 seed = 1001
 # init cov model (truncated power law with gaussian modes)
 cov = gs.TPLGaussian(dim=2, var=var, len_scale=len_scale, hurst=hurst)
@@ -41,10 +40,10 @@ triang = tri.Triangulation(srf.pos[0], srf.pos[1])
 field = srf.field.ravel()
 
 ax.tricontour(triang, field, zorder=-10, levels=16) # anti-alias
-cont = ax.tricontourf(triang, field, levels=16)
+cont1 = ax.tricontourf(triang, field, levels=16)
 circle = plt.Circle((0, 0), 990, linewidth=1.5, color='k', fill=False)
 ax.add_artist(circle)
-cbar = fig.colorbar(cont, ticks=[-12, -10, -8, -6])
+cbar = fig.colorbar(cont1, ticks=[-12, -10, -8, -6])
 cbar.ax.set_ylabel("log-transmissivity")
 
 ax.set_aspect("equal")
@@ -57,8 +56,13 @@ axins = zoomed_inset_axes(ax, zoom=8.5, loc=1)
 axins.tricontour(triang, field, zorder=-10, levels=16) # anti-alias
 cont2 = axins.tricontourf(triang, field, levels=16)
 axins.scatter(0, 0, 5, color="k")
-axins.annotate("well", (5, -2))
-
+axins.annotate(r"well", (5, -2))
+axins.text(
+    *(.98, .02, r"$100m\times 100m$"),
+    fontsize=8,
+    transform=axins.transAxes,
+    horizontalalignment="right",
+)
 axins.set_xlim(-50, 50)
 axins.set_ylim(-50, 50)
 axins.set_xticks([])
@@ -67,7 +71,7 @@ axins.set_yticks([])
 mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="k")
 
 # anti-alias
-for c in cont.collections:
+for c in cont1.collections:
     c.set_edgecolor("face")
 for c in cont2.collections:
     c.set_edgecolor("face")
