@@ -87,7 +87,7 @@ ax.set_xticklabels(["$0$", "$\ell$", "$2\ell$", "$3\ell$"])
 ax.set_xlabel("$r$ in $[m]$")
 
 ax.grid(linestyle=":")
-ax.legend(loc=(0.59, 0.21))
+# ax.legend(loc=(0.59, 0.21))
 
 fig.tight_layout()
 fig.savefig(os.path.join("..", "results", "05_KTPL.pdf"), dpi=300)
