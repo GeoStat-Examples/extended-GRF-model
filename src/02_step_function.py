@@ -53,7 +53,7 @@ K_part = annular_hmean(
     len_scale=len_scale,
 )
 
-rad = specialrange(0, 15, 1000)
+rad = specialrange(0, 3 * len_scale, 1000)
 
 ax.plot(
     rad,
@@ -88,7 +88,7 @@ ax.plot(
 )
 
 ax.ticklabel_format(axis='y', style='scientific', scilimits=(-4, -4))
-ax.set_xlim([-0.3, 15.3])
+ax.set_xlim([-0.06 * len_scale, 3.06 * len_scale])
 ax.set_xticks([0, len_scale, 2 * len_scale, 3 * len_scale])
 ax.set_xticklabels(["$0$", "$\ell$", "$2\ell$", "$3\ell$"])
 

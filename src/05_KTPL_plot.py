@@ -40,13 +40,13 @@ plt.style.use("default")
 mpl.rc("text", usetex=True)
 mpl.rc("lines", linewidth=2.5)
 plt.close("all")
-fig = plt.figure(figsize=[5, 3.5])
+fig = plt.figure(figsize=[5, 3])
 ax = fig.add_subplot(1, 1, 1)
 
 ###############################################################################
 ### Parameter Settings
 cond_gmean = 1e-4  # the geometric mean of the transmissivity
-len_scale = 1.0  # correlation length of the log-transmissivity
+len_scale = 5.0  # correlation length of the log-transmissivity
 hurst = 0.5  # hurst coefficient
 var = 1.0  # variance of the log-transmissivity
 
@@ -67,7 +67,7 @@ for dim in [3, 2.5, 2]:
     ax.text(
         rad[-1],
         1.01 * K_efu,
-        "$K_{\mathrm{efu}}/K_G$ (" + "{}D)".format(dim),
+        "$K_{{\mathrm{{efu}}}}/K_G$ ({}D)".format(dim),
         horizontalalignment="right",
     )
 
@@ -79,14 +79,15 @@ ax.text(
     horizontalalignment="right",
 )
 
-ax.set_ylim(0.56, 1.24)
-ax.set_xlabel("$r$ in $[m]$")
+ax.set_ylim(0.58, 1.25)
 ax.set_ylabel("$K(r)/K_G$")
+ax.set_xlim([-0.06 * len_scale, 3.06 * len_scale])
 ax.set_xticks([0, len_scale, 2 * len_scale, 3 * len_scale])
 ax.set_xticklabels(["$0$", "$\ell$", "$2\ell$", "$3\ell$"])
+ax.set_xlabel("$r$ in $[m]$")
 
 ax.grid(linestyle=":")
-ax.legend(loc=(0.56, 0.2))
+ax.legend(loc=(0.59, 0.21))
 
 fig.tight_layout()
 fig.savefig(os.path.join("..", "results", "05_KTPL.pdf"), dpi=300)
