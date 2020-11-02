@@ -18,7 +18,7 @@ ax = fig.add_subplot(1, 1, 1)
 
 # parameter lists to generate the para_set (single one)
 TG = 1e-4  # mu = log(TG)
-var = 1.0
+var = 1.0 ** 2
 len_scale = 10
 hurst = 0.5
 
@@ -39,22 +39,28 @@ srf.mesh(msh, seed=seed, point_volumes=msh.volumes_flat)
 triang = tri.Triangulation(srf.pos[0], srf.pos[1])
 field = srf.field.ravel()
 
-ax.tricontour(triang, field, zorder=-10, levels=16) # anti-alias
-cont1 = ax.tricontourf(triang, field, levels=16)
+field[-56] = np.log(1e-2) + .1 # artificial value for colorbar fix (high-bound)
+field[-55] = np.log(1e-6) - .1 # artificial value for colorbar fix (low-bound)
+ticks = [np.log(10 ** i) for i in range(-6, 1)]  # log-scale values
+labels = [r"$10^{" + str(i) + r"}$" for i in range(-6, 1)]
+levels=24
+
+ax.tricontour(triang, field, zorder=-10, levels=levels) # anti-alias
+cont1 = ax.tricontourf(triang, field, levels=levels)
 circle = plt.Circle((0, 0), 990, linewidth=1.5, color='k', fill=False)
 ax.add_artist(circle)
-cbar = fig.colorbar(cont1, ticks=[-12, -10, -8, -6])
-cbar.ax.set_ylabel("log-transmissivity")
-
+cbar = fig.colorbar(cont1, ticks=ticks)
+cbar.ax.set_yticklabels(labels)
+cbar.ax.set_ylabel(r"transmissivity $T$ in $\left[\frac{m^2}{s}\right]$")
 ax.set_aspect("equal")
 ax.set_xticks([-1000, -500, 0, 500, 1000])
 ax.set_yticks([-1000, -500, 0, 500, 1000])
 ax.set_xlabel("$x$ in $[m]$")
-ax.set_ylabel("$y$ in $[m]$")
+ax.set_ylabel("$y$ in $[m]$", labelpad=-10)
 
 axins = zoomed_inset_axes(ax, zoom=8.5, loc=1)
-axins.tricontour(triang, field, zorder=-10, levels=16) # anti-alias
-cont2 = axins.tricontourf(triang, field, levels=16)
+axins.tricontour(triang, field, zorder=-10, levels=levels) # anti-alias
+cont2 = axins.tricontourf(triang, field, levels=levels)
 axins.scatter(0, 0, 5, color="k")
 axins.annotate(r"well", (5, -2))
 axins.text(
