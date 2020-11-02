@@ -86,7 +86,7 @@ def compare(base="eGRF_TPL_2D", p_min=0, p_max=np.inf):
 def plot_diff(time, rad, rt_head, et_head, para_no, path, para):
     """Plot the comparisson between effective head and ensemble mean."""
     plt.close("all")
-    fig = plt.figure(figsize=[9, 3])
+    fig = plt.figure(figsize=[10, 3.4])
     ax0 = plt.subplot2grid((1, 3), (0, 0), fig=fig, projection=Axes3D.name)
     ax1 = plt.subplot2grid((1, 3), (0, 2), fig=fig, projection=Axes3D.name)
     ax2 = plt.subplot2grid((1, 3), (0, 1), fig=fig, projection=Axes3D.name)
@@ -168,7 +168,7 @@ def plot_diff(time, rad, rt_head, et_head, para_no, path, para):
     ax1.set_zlim((z_min, z_max))
     ax2.set_zlim((-1, 1))
     fig.tight_layout()
-    plt.savefig(os.path.join(path, "{:04}_diff.pdf".format(para_no)))
+    plt.savefig(os.path.join(path, "{:04}_diff.pdf".format(para_no)), dpi=300)
     plt.close("all")
 
 
