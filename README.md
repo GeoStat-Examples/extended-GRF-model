@@ -28,9 +28,9 @@ The workflow is organized by the following structure:
   - `01_convergence.py` - demonstating the convergence of the effective TPL solution
   - `02_step_function.py` - plot different step function approximations
   - `03_literature_transmissivities.py` - comparision of drawdowns for different
-  - `04_trans_plot.py` - plot a realization of a TPL transmissivity field
     transimissivites from literature
-  - `comparison`:
+  - `04_trans_plot.py` - plot a realization of a TPL transmissivity field
+  - `comparison/` - scripts for the comparison of ensemble mean to effective TPL heads
     - `00_run_sim_mpi.sh` - bash file running `01_run_sim.py` in parallel
     - `01_run_sim.py` - run all ensemble simulations for pumping tests on TPL aquifers
     - `02_compare_mean.py` - generate comparision plots for the ensemble means
