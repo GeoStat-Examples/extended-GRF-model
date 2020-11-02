@@ -31,9 +31,6 @@ from matplotlib import pyplot as plt
 import matplotlib as mpl
 from anaflow.tools.coarse_graining import TPL_CG
 
-# from anaflow.tools.mean import annular_hmean
-# from anaflow.tools.special import specialrange_cut, specialrange, step_f
-
 ###############################################################################
 ### Plot Settings
 plt.style.use("default")
@@ -46,9 +43,9 @@ ax = fig.add_subplot(1, 1, 1)
 ###############################################################################
 ### Parameter Settings
 cond_gmean = 1e-4  # the geometric mean of the transmissivity
-len_scale = 5.0  # correlation length of the log-transmissivity
-hurst = 0.5  # hurst coefficient
-var = 1.0  # variance of the log-transmissivity
+len_scale = 5.0    # correlation length of the log-transmissivity
+hurst = 0.5        # hurst coefficient
+var = 1.0          # variance of the log-transmissivity
 
 rad = np.linspace(0, 3 * len_scale, 1000)
 K_H = np.exp(-var / 2)

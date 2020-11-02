@@ -121,7 +121,7 @@ solutions.append(sol)
 
 # PLOTTING
 plt.close("all")
-fig = plt.figure(figsize=[9, 5], constrained_layout=False)
+fig = plt.figure(figsize=[10, 5], constrained_layout=False)
 gs = fig.add_gridspec(2, 1)  # two rows
 rows = []
 rows.append(gs[0].subgridspec(2, 3, height_ratios=[1, 3], hspace=0, wspace=0.1))
