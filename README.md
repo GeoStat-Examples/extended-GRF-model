@@ -31,6 +31,8 @@ The workflow is organized by the following structure:
   - `03_literature_transmissivities.py` - comparision of drawdowns for different
     transimissivites from literature
   - `04_trans_plot.py` - plot a realization of a TPL transmissivity field
+  - `05_KTPL_plot.py` - plot K_TPL for different dimensions
+  - `06_tplgaussian_vs_matern.py` - comparison of TPL-Gaussian and Matern models
   - `comparison/` - scripts for the comparison of ensemble mean to effective TPL heads
     - `00_run_sim_mpi.sh` - bash file running `01_run_sim.py` in parallel
     - `01_run_sim.py` - run all ensemble simulations for pumping tests on TPL aquifers
@@ -43,7 +45,7 @@ The workflow is organized by the following structure:
 Main Python dependencies are stored in `requirements.txt`:
 
 ```
-gstools==1.2.1
+gstools==1.3.0
 anaflow==1.0.1
 ogs5py==1.1.1
 matplotlib
