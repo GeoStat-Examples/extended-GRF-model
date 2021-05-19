@@ -65,4 +65,4 @@ You can contact us via <info@geostat-framework.org>.
 
 ## License
 
-MIT © 2020
+MIT © 2021
