@@ -70,6 +70,12 @@ def compare(base="eGRF_TPL_2D", p_min=0, p_max=np.inf):
             # gaussian covmodel in GSTools normalized to integral scale
             prop=np.sqrt(np.pi * 2),
         )
+        # print relative errors
+        abs_diff = np.abs(rt_head - et_head)
+        abs_mean = 0.5 * (np.abs(rt_head) + np.abs(et_head))
+        rel_diff = abs_diff / np.max(abs_mean)
+        print("  max rel. diff:", np.max(rel_diff))
+        # creat plots
         plot_diff(
             time_select, rad_select, rt_head, et_head, para_no, path, para
         )
